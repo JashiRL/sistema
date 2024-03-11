@@ -187,17 +187,17 @@
                                 >
                         </td>
                         <td>
-                            <?php echo $empleado['Nombre']; ?> <?php echo $empleado['Apaterno']; ?> <?php echo $empleado['Amaterno'];?>
+                            <?php echo $empleado['nombre']; ?> <?php echo $empleado['apaterno']; ?> <?php echo $empleado['amaterno'];?>
                         
                         </td>
                         <td>
-                            <?php echo $empleado['Correo']; ?>
+                            <?php echo $empleado['correo']; ?>
                         </td>
                         <td>
                             <form action="" method="post">
                                 <input type="hidden"
                                         name="txtID"
-                                        value="<?php echo $empleado ['ID']; ?>"
+                                        value="<?php echo $empleado ['id']; ?>"
                                         >
                                 <input type="submit"
                                         value="Seleccionar"

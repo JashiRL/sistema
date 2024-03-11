@@ -54,6 +54,23 @@
             $query->execute();
             header('Location: index.php');
             break;
+        
+            case 'btnEliminar':
+                $queryEliminar = $pdo->prepare('SELECT foro FROM empleados WHERE id=:id')
+                $queryEliminar->bindParam(':id', $txtID);
+                $queryEliminar->execute();
+                $empleado = $queryEliminar->fecth(PDO::FETCH_LAZY);
+
+                if(isset($empleado['foto']) && $empleado['foto'] != 'image') {
+                    if (file_exists('../imagenes/'. $empleado['foto'])) {
+                        unlink('../imagenes/'.$empleado['foto'])
+                    }
+                }
+
+            $queryDelete = $pdo->prepare('DELETE FROM empleados WHERE id=:id');
+            $queryDelete->bindParam(':id', $txtID);
+            header('location: index.php');
+
     }
 
     $querySelect = $pdo->prepare('SELECT * FROM empleados');
