@@ -44,6 +44,19 @@
             $fecha = new Datetime();
             $nombreFoto = ($txtFoto != '') ? $fecha->getTimestamp(). '_' . $_FILES['txtFoto']['name'] : 'image';
             //numero de hora a nivel mundial
+            $tmpFoto = $_FILES ['txtFoto']['tmp_name'];
 
+            if ($tmpFoto != '') {
+                move_uploaded_file($tmpFoto, '../imagenes/'.$nombreFoto);
+            }
+
+            $query->bindParam(':foto', $nombreFoto);
+            $query->execute();
+            header('Location: index.php');
+            break;
     }
+
+    $querySelect = $pdo->prepare('SELECT * FROM empleados');
+    $querySelect->execute();
+    $listaEmpleados = $querySelect->fecthAll(PDO::FETCH_ASSOC);
 ?>
