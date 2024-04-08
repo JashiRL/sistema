@@ -1,5 +1,5 @@
 <?php 
-    require 'empleados.php'
+    require 'empleados.php';
 ?>
 
 <!DOCTYPE html>

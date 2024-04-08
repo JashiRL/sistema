@@ -82,17 +82,17 @@
                 $queryUpdate->bindParam(':id', $txtID);
                 $queryUpdate->execute();
                 $fecha = new DateTime();
-                $nombreFoto = ($txtFoto != '') ? $fecha->getTimestamp() . "_" . $__FILES["txtFoto"]["name"] : "image";
+                $nombreFoto = ($txtFoto != '') ? $fecha->getTimestamp() . "_" . $_FILES["txtFoto"]["name"] : "image";
                 $tmpFoto = $_FILES ['txtFoto']['tmp_name'];
                 if ($tmpFoto != '') {
                     move_uploaded_file($tmpFoto, "../imagenes/".$nombreFoto);
                 $queryEliminar = $pdo->prepare('SELECT foto FROM empleados WHERE id=:id');
                 $queryEliminar->bindParam(':id', $txtID);
                 $queryEliminar->execute();
-                $empleado = $queryEliminar->fecth(PDO::FETCH_LAZY);
+                $empleado = $queryEliminar->fetch(PDO::FETCH_LAZY);
 
                 if(isset($empleado['foto']) && $empleado['foto'] != 'image') {
-                    if (file_exists('../imagenes/'. $empleado['foto'])) {
+                    if (file_exists('../imagnes/'. $empleado['foto'])) {
                         unlink('../imagenes/'.$empleado['foto']);
                     }
                     }
